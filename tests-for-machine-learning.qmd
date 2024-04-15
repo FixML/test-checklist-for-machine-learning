@@ -104,6 +104,6 @@ There are several ways test quality can be assessed:
 
 1. Human expert quality control (QC) - a human expert reviews the test cases and evaluates the test suite quality and case coverage. This assessment can be of great utility and high quality, but it is manual and thus can be quite slow. This can also be limited by the availablility of the human expert.
 2. Coverage (e.g., branch or line coverage) - the lines, or branches, of code executed by the test suite is calculated as a percentage of the code base. This assessment can be completely automated, and is therefore very efficient, it however does not assess the quality of the test cases.
-3. Mutation testing - the code under test is intentionally changed/mutated to induce bugs, and the test suite is evaluated for its ability to detect the mutations. This can be a nice balance between human expert QC and coverage, as although human expertise is needed to design and create the mutated version of the code base, once created, assessing it can be automated.
+3. Mutation testing - the code under test is intentionally changed/mutated to induce bugs, and the test suite is evaluated for its ability to detect the mutations. This can be a nice balance between human expert QC and coverage, as although human expertise is needed to design and create the mutated version of the code base, once created, assessing it can be automated. See @8424982 for an example where this was used to assess the presence of bugs in Weka machine learning code.
 
 ## References
