@@ -1,0 +1,101 @@
+---
+title: "Tests for machine learning"
+author: "Tiffany A. Timbers"
+format:
+  pdf:
+    toc: true
+    number-sections: true
+bibliography: references.bib
+---
+
+## Context
+
+Checklists have been shown to decrease errors 
+in safety critical systems [@gawande2010checklist], 
+and the use of a reproducibility checklist 
+at the Machine Learning NeurIPS 2019 conference led to an increase 
+in the percentage of authors submitting the code for their work 
+[from 50% to 75%; @pineau2021improving]. 
+Thus, in an effort to make applied machine learning software more trustworthy
+by increasing its robustness, 
+we aim to create a general and robust checklist 
+for creating software tests for applied machine learning code. 
+Such a checklist should include tests for data presence, quality 
+and ingestion at the beginning of the analysis, 
+the model fitting and evaluation, 
+as well as tests for the artifacts (presence and quality) 
+which are created by the analysis. 
+The applied machine learning checklist should include software tests
+for things in the scholarly literature that have been deemed as important
+for correct and robust applied machine learning software,
+as well as things that commonly go wrong in applied machine learning code
+(threat model).
+Such a checklist may be used by data scientists and machine learning engineers
+to guide the manual writing of tests.
+It may act as a source for engineering large-language model (LLM) prompts 
+that act as reliable starting points for engineering reproducible test data 
+and software tests themselves for each item on the checklist. 
+
+## Annotated checklist of tests for machine learning
+
+#### Saving and loading data
+
+- [ ] Loading data file function works as expected [@microsoftengplaybook].
+- [ ] Saving data/figures function works as expected
+
+#### Data Validation
+
+- [ ] Files contain data [@microsoftengplaybook].
+- [ ] Data/images in the expected format [@microsoftengplaybook].
+- [ ] Data does not contain null values or outliers [@microsoftengplaybook].
+
+#### Cleaning and transforming data
+
+- [ ] Cleaning and transforming functions works as expected [@microsoftengplaybook].
+
+#### Modeling (pre-train tests)
+
+- [ ] Does the model accept the correct inputs and produce the correctly shaped outputs [@microsoftengplaybook]?
+- [ ] Do the weights of the model update when running fit [@microsoftengplaybook]?
+- [ ] Does model output aligns with expectations (for example, in classification, are the labels what are expected based on input) [@efftestML]?
+- [ ] Do the output ranges align with our expectations (eg. the output of a classification model should be a distribution with class probabilities that sum to 1) [@efftestML]?
+- [ ]Does a single gradient step on a batch of data yield a decrease in your loss [@efftestML]?
+- [ ] Is there leakage between your training, validation and test datasets [@efftestML]?
+
+#### Other potential tests for modeling
+
+We can also write tests that assess 
+whether the machine learning model logic is correct,
+these tests are referred to as post-train tests, or behavioural tests 
+[@efftestML, @ribeiro2020beyond].
+As well as tests to assess model performance,
+these tests are referred to as evaluation tests [@howtotestMLcode].
+These evaluation tests may be particularly useful for 
+determining data distribution shifts when models are in production.
+
+## Machine learning testing examples
+
+There exist several examples/demos of how to test machine learning code. 
+The data set and code used in these examples, 
+may be an excellent starting place for the first test case to assess if 
+the checklist can be used by LLM's to generate reproducible test data 
+and high quality test cases.
+
+- [`testing-ml`](https://github.com/eugeneyan/testing-ml) by Eugene Yan and [the accompanying article](https://eugeneyan.com/writing/testing-ml/#model-evaluation-to-ensure-satisfactory-performance)
+uses the Titanic data set
+- [`mercury-robust`](https://github.com/BBVA/mercury-robust) by BBVA uses the Titanic, Tips and default credit card data sets
+- [`breast_cancer_predictor_py`](https://github.com/ttimbers/breast_cancer_predictor_py) uses the Madison Wisconsin Breast Cancer data set
+
+## Cookiecutters
+
+Having a function specifications for the functions 
+needed for an applied machine learning project 
+would be useful for pairing with the prompts 
+for LLM test data and test suite generation.
+Below is a potential Cookiecutter project templates 
+that might be of interest for modification and/or extension 
+with the checklist items and prompts:
+
+- [`cookiecutter-data-science`](https://github.com/drivendata/cookiecutter-data-science) by [\@drivendata](https://github.com/drivendata) (very popular and well structured project with scripts and pipeline, no function specifications however) 
+
+## References
