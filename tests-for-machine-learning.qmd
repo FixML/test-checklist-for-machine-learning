@@ -86,7 +86,7 @@ uses the Titanic data set
 - [`mercury-robust`](https://github.com/BBVA/mercury-robust) by BBVA uses the Titanic, Tips and default credit card data sets
 - [`breast_cancer_predictor_py`](https://github.com/ttimbers/breast_cancer_predictor_py) by Timbers *et al.* uses the Madison Wisconsin Breast Cancer data set
 
-## Cookiecutters
+## Cookiecutter project templates
 
 Having a function specifications for the functions 
 needed for an applied machine learning project 
@@ -97,5 +97,13 @@ that might be of interest for modification and/or extension
 with the checklist items and prompts:
 
 - [`cookiecutter-data-science`](https://github.com/drivendata/cookiecutter-data-science) by [\@drivendata](https://github.com/drivendata) (very popular and well structured project with scripts and pipeline, no function specifications however) 
+
+## How to assess test quality of automated tests
+
+There are several ways test quality can be assessed:
+
+1. Human expert quality control (QC) - a human expert reviews the test cases and evaluates the test suite quality and case coverage. This assessment can be of great utility and high quality, but it is manual and thus can be quite slow. This can also be limited by the availablility of the human expert.
+2. Coverage (e.g., branch or line coverage) - the lines, or branches, of code executed by the test suite is calculated as a percentage of the code base. This assessment can be completely automated, and is therefore very efficient, it however does not assess the quality of the test cases.
+3. Mutation testing - the code under test is intentionally changed/mutated to induce bugs, and the test suite is evaluated for its ability to detect the mutations. This can be a nice balance between human expert QC and coverage, as although human expertise is needed to design and create the mutated version of the code base, once created, assessing it can be automated.
 
 ## References
