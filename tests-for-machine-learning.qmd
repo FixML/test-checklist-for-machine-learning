@@ -59,7 +59,7 @@ and software tests themselves for each item on the checklist.
 - [ ] Do the weights of the model update when running fit [@microsoftengplaybook]?
 - [ ] Does model output aligns with expectations (for example, in classification, are the labels what are expected based on input) [@efftestML]?
 - [ ] Do the output ranges align with our expectations (eg. the output of a classification model should be a distribution with class probabilities that sum to 1) [@efftestML]?
-- [ ]Does a single gradient step on a batch of data yield a decrease in your loss [@efftestML]?
+- [ ] Does a single gradient step on a batch of data yield a decrease in your loss [@efftestML]?
 - [ ] Is there leakage between your training, validation and test datasets [@efftestML]?
 
 #### Other potential tests for modeling
@@ -84,7 +84,7 @@ and high quality test cases.
 - [`testing-ml`](https://github.com/eugeneyan/testing-ml) by Eugene Yan and [the accompanying article](https://eugeneyan.com/writing/testing-ml/#model-evaluation-to-ensure-satisfactory-performance)
 uses the Titanic data set
 - [`mercury-robust`](https://github.com/BBVA/mercury-robust) by BBVA uses the Titanic, Tips and default credit card data sets
-- [`breast_cancer_predictor_py`](https://github.com/ttimbers/breast_cancer_predictor_py) uses the Madison Wisconsin Breast Cancer data set
+- [`breast_cancer_predictor_py`](https://github.com/ttimbers/breast_cancer_predictor_py) by Timbers *et al.* uses the Madison Wisconsin Breast Cancer data set
 
 ## Cookiecutters
 
