@@ -19,24 +19,79 @@ in the percentage of authors submitting the code for their work
 Thus, in an effort to make applied machine learning software more trustworthy
 by increasing its robustness, 
 we aim to create a general and robust checklist 
-for creating software tests for applied machine learning code. 
+for creating software tests for applied machine learning code.
+Such a checklist may be used by data scientists and machine learning engineers
+to guide the manual writing of tests.
+It may also act as a source for engineering large-language model (LLM) prompts 
+that act as reliable starting points for engineering reproducible test data 
+and software tests themselves for each item on the checklist. 
+
 Such a checklist should include tests for data presence, quality 
 and ingestion at the beginning of the analysis, 
 the model fitting and evaluation, 
 as well as tests for the artifacts (presence and quality) 
 which are created by the analysis. 
-The applied machine learning checklist should include software tests
-for things in the scholarly literature that have been deemed as important
-for correct and robust applied machine learning software,
-as well as things that commonly go wrong in applied machine learning code
-(threat model).
-Such a checklist may be used by data scientists and machine learning engineers
-to guide the manual writing of tests.
-It may act as a source for engineering large-language model (LLM) prompts 
-that act as reliable starting points for engineering reproducible test data 
-and software tests themselves for each item on the checklist. 
+To write a comprehensive checklist for creating software tests 
+for applied machine learning code we are researching industrial best practices
+(e.g., as documented in published guides, such as @microsoftengplaybook,
+and blog posts of experienced machine learning software engineers,
+for example @efftestML),
+as well as the published academic literature 
+[@BRAIEK2020110542; @openja2023studying; @silva2023case].
+@openja2023studying in particular is of significant interest 
+as they comprehensibly studied the testing strategies 
+of 10 open source machine learning projects;
+and identified 15 major categories of testing strategies 
+used by machine learning engineers and 13 different types of tests.
+Furthermore, they quantified the frequency of these to identify
+which are most common across the projects studied.
+
+The identification and categorization testing strategies and types of tests
+used by machine learning engineers in the wild [@openja2023studying]
+is very informative as to which strategies and test types should be used
+for future machine learning projects. 
+Additionally, it would be wise to link each item 
+on the comprehensive machine learning testing checklist we are developing 
+to each test strategy and test type identified in @openja2023studying.
+One outstanding question from this work however is 
+how representative are those 10 machine learning projects 
+studied by @openja2023studying?
+
+It would be very informative and worthwhile to examine additional
+machine learning projects to assess 
+whether their findings do extend to other projects.
+In particular projects that are more complete, 
+such as published machine learning analyses,
+as well as projects where machine learning is being applied 
+as the type of analysis to answer predictive questions in a given domain.
+There are two potential sources of data for this,
+the first being a subset of the papers identified in @wattanakriengkrai2022github.
+In that study, they linked 377 GitHub repositories to academic papers,
+as well as coded each study as to what they were focused on 
+(e.g., deep learning, computer vision, NLP, machine learning, sensors, etc).
+This data set is open and available
+[here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7gkxqJpzsa4T2ZuZg-VfAvD9U4r-XbpmwdlkK3k_RZ5Jc8bhgLK6I6xHj_KSTHTZaoJg-SqcE2yPj/pubhtml).
+These studies appear to primarily be methodology papers.
+A second source for studies is the 
+[xDD/GeoDeepDive API](https://geodeepdive.org/index.html).
+This API aims to allow for the extraction of "dark data" from scientific works, 
+which were previously only available from manually reading of the literature.
+This API could be used to identify papers 
+where machine learning is being applied as the type of analysis 
+to answer predictive questions in a given domain.
+It is very possible that both types of work 
+(methodological machine learning studies 
+and studies where machine learning is applied 
+to answer a predictive question in a given domain)
+use and need different types of tests and testing strategies.
+This is currently unknown.
 
 ## Annotated checklist of tests for machine learning
+
+> Below is a tentative checklist of items that should go on 
+> the comprehensive checklist for applied machine learning projects. 
+> It is by no means "comprehensive" at this point 
+> and currently only includes ideas from @microsoftengplaybook and @efftestML.
 
 #### Saving and loading data
 
