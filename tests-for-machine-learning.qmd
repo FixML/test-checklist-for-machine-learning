@@ -53,10 +53,11 @@ for future machine learning projects.
 Additionally, it would be wise to link each item 
 on the comprehensive machine learning testing checklist we are developing 
 to each test strategy and test type identified in @openja2023studying.
+Finally, @openja2023studying present a figure developed by 
+
 One outstanding question from this work however is 
 how representative are those 10 machine learning projects 
 studied by @openja2023studying?
-
 It would be very informative and worthwhile to examine additional
 machine learning projects to assess 
 whether their findings do extend to other projects.
