@@ -1,6 +1,9 @@
-## Tests for machine learning
+## Test checklist for machine learning
+(A manuscript under development)
 
-Tiffany A. Timbers, 2024
+Authors: Simon Goring, Yingzi Jin, John Shiu, Tony Shum, Orix Au Yeung, Rohan Alexander, Tiffany A. Timbers 
+
+Date: 2024
 
 ### Abstract:
 
