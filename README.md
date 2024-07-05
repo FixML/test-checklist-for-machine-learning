@@ -1,7 +1,8 @@
-## Test checklist for machine learning
+## Test checklist for machine learning applications
 (A manuscript under development)
 
-Authors: Simon Goring, Yingzi Jin, John Shiu, Tony Shum, Orix Au Yeung, Rohan Alexander, Tiffany A. Timbers 
+Authors: Simon Goring, Yingzi Jin, John Shiu, Tony Shum, Orix Au Yeung, 
+Rohan Alexander, Tiffany A. Timbers 
 
 Date: 2024
 
