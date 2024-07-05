@@ -35,7 +35,7 @@ and software tests themselves for each item on the checklist.
 
 ### Data and sources:
 
-Please see [`tests-for-machine-learning.pdf`](tests-for-machine-learning.pdf)
+Please see [`proposal/tests-for-machine-learning.pdf`](proposal/tests-for-machine-learning.pdf)
 for details on data and sources.
 
 ### License:
