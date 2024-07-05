@@ -1,0 +1,22 @@
+- Recall goal: a checklist for tests for applied machine learning projects
+- Highlight # of checklist items, and number across each test category
+- Summarize findings from evaluation of $n$ applied machine learning projects 
+with regards to the checklist
+- Discuss potential immediate applications of checklist
+  - professional data analysts/machine learning engineers 
+  working on applied machine learning projects 
+  (guide in the actual writing of tests)
+  - Senior tech leads evaluating their team's applied machine learning project
+  - Data science educators grading student projects
+  - Data science students working on their own projects 
+  (guide in the actual writing of tests)
+- Discuss further off applications of the checklist:
+  - a source for engineering large-language model (LLM) prompts 
+  that act as reliable starting points for evaluating the quality 
+  of existing machine learning code
+  - a source for engineering large-language model (LLM) prompts 
+  that generate code for reproducible test data and software tests themselves 
+  for each item on the checklist
+- Come back to societal and economic impacts this tool may have 
+(revisit misinformation [@Ashley2024], social bias [@Alice2023], 
+substantial financial losses [@Asheeta2019], and safety hazards [@David2023])

@@ -1,0 +1,9 @@
+- On what kind of systems has most software testing literature 
+been well studied and focused?
+- What kinds of software tests exist 
+- What do we know about software testing in machine learning code,
+summarize: @BRAIEK2020110542, @openja2023studying and @silva2023case
+answering what kinds of software tests have been observed to be used in the wild.
+- Recommendations for testing from industry, 
+summarize: @microsoftengplaybook and @efftestML
+- Propose an edited version of the testing triangle that is more understandable

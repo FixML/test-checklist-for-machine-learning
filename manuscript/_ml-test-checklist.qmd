@@ -1,0 +1,6 @@
+- Present the checklist
+- Use breast cancer toy example/demo to walk through 3-5 items from the checklist
+(maybe one from each kind of test from the testing triangle?)
+- Report evaluation of $n$ (not sure what number n should be...) 
+applied machine learning projects in the wild with respect to the checklist 
+(creates a benchmark)

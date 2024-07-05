@@ -1,0 +1,11 @@
+- Problem with software robustness with applied machine learning code. 
+Include and cite examples where non-robust code
+has led to negative societal and economic impacts 
+(e.g., misinformation [@Ashley2024], social bias [@Alice2023], 
+substantial financial losses [@Asheeta2019], and safety hazards [@David2023])
+- Checklists as a solution to safety critical systems [@gawande2010checklist]
+- Checklists impact in machine learning reproducibility [@pineau2021improving]
+- Goal: a checklist for tests for applied machine learning projects
+- Potential impact: guide for practitioners, code reviewers, educators, 
+as well as LLM prompts starting points for automated code test suite evaluation 
+and automated test data and software test generation.

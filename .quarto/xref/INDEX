@@ -1,5 +1,8 @@
 {
   "tests-for-machine-learning.qmd": {
     "tests-for-machine-learning.tex": "64587df3"
+  },
+  "manuscript/test-checklist-for-machine-learning.qmd": {
+    "test-checklist-for-machine-learning.tex": "c4f3ce6f"
   }
 }
