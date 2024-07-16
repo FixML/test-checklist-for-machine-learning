@@ -6,6 +6,10 @@ substantial financial losses [@Asheeta2019], and safety hazards [@David2023])
 - Checklists as a solution to safety critical systems [@gawande2010checklist]
 - Checklists impact in machine learning reproducibility [@pineau2021improving]
 - Goal: a checklist for tests for applied machine learning projects
+- Scope: test checklist is aimed at applications of machine learning,
+not new machine learning methodologies. 
+In future, a checklist for that could be developed, 
+but that is out of scope for this paper.
 - Potential impact: guide for practitioners, code reviewers, educators, 
 as well as LLM prompts starting points for automated code test suite evaluation 
 and automated test data and software test generation.

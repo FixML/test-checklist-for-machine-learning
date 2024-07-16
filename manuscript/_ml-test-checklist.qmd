@@ -1,7 +1,3 @@
-- Present the checklist
-
-### Applied machine learning checklist
-
 - Discuss possible threats to a robust and trustworthy applied machine learning 
 project, possible issues include:
 
@@ -30,7 +26,8 @@ for machine learning to the following issues:
 5. Model stability issues (e.g., a different train-validation split leads to a large change in the model)
 6. Model behaviour/learning issues (e.g., model learns shortcut to predictions that can learn to erroneous prediction in certain cases)
 7. Bias/fairness issues (e.g., model makes different predictions for particular subgroups of observations)
-8. Data drift (e.g., model performance decreases over time in production and the new data appears to being coming from a different distribution than the test data)
+8. Reproducibility issues (e.g., model training and prediction outputs are different on different computers or operating systems)
+9. Data drift (e.g., model performance decreases over time in production and the new data appears to being coming from a different distribution than the test data)
 
 #### Applied machine learning checklist items
 
