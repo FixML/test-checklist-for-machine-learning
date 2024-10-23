@@ -1,4 +1,4 @@
-## Test checklist for machine learning applications
+## Software test checklist for machine learning applications
 (A manuscript under development)
 
 Authors: Simon Goring, Yingzi Jin, John Shiu, Tony Shum, Orix Au Yeung, 
