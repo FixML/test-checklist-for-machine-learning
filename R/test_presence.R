@@ -5,6 +5,7 @@ library(tidyverse)
 
 args <- commandArgs(trailingOnly = TRUE)
 data_path <- args[1]
+plot_path <- args[2]
 
 
 # Read data ---------------------------------------------------------------
@@ -28,3 +29,4 @@ prop_tests <- ggplot(nat_cs_papers,
     ylab("Number of papers with code") +
     theme_classic()
 
+ggsave(plot_path)
