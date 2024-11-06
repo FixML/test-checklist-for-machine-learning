@@ -1,68 +1,114 @@
 - Discuss possible threats to a robust and trustworthy applied machine learning 
 project, possible issues include:
 
-    - General errors in code (e.g., bug in code that leads to data labels being shifted by one, or misnaming a file being written to disk)
-    - Mismatch of machine learning model choices with respect to the data used for training and evaluation (e.g., linear regression for binomial data)
+    - General errors in code
+    - Mismatch of machine learning model choices with respect to the data used for training and evaluation (e.g., linear regression for binomial data) and question being asked.
+    - Data extraction errors (E in ETL pipeline)
     - Data quality issues (e.g., missing data, duplicate data, data anomalies, imbalances in categorical data, etc)
-    - Data leakage between training and test set, leading to overfitting (e.g., test data being used to create pre-processing object)
-    - Issues with hyperparameter tuning (e.g., too small of a search space when choosing hyperparameters)
-    - General model performance (e.g., for example, in classification, are the labels what are expected based on input)
+    - Data cleaning/transformation and feature engineering errors.
+    - Data leakage between training and test set (e.g., test data being used to create pre-processing object)
+    - Model training issues (e.g., did not tune model)
+    - Model output issues (e.g., for example, in classification, are the labels what are expected based on input, model learns shortcut to predictions that can learn to erroneous prediction in certain cases)
     - Model stability issues (e.g., a different train-validation split leads to a large change in the model)
-    - Model behaviour/learning issues (e.g., model learns shortcut to predictions that can learn to erroneous prediction in certain cases)
-    - Bias/fairness issues (e.g., model makes different predictions for particular subgroups of observations)
-    - Reproducibility issues (e.g., model training and prediction outputs are different on different computers or operating systems)
+    - Bias/fairness issues (e.g., model makes different predictions for particular protected subgroups of the data)
     - Data drift (e.g., model performance decreases over time in production and the new data appears to being coming from a different distribution than the test data)
-    - Communication of results/predictions issues and/or user interface issues (this itself is very very broad... and may have to be split out)
+    - Reproducibility issues (e.g., model training and prediction outputs are different on different computers or operating systems)
+    - Communication of results/predictions issues 
+    - User interface issues (this itself is very very broad... and may have to be split out)
 
 - Not all issues presented above can be adequately addressed 
-through writing software tests,
-and so we will reduce the list for the purpose of our software test checklist
-for machine learning to the following issues:
-
-1. Errors in code (e.g., bug in code that leads to data labels being shifted by one, or misnaming a file being written to disk)
-2. Data quality issues (e.g., missing data, duplicate data, data anomalies, imbalances in categorical data, etc)
-3. Data leakage between training and test set, leading to overfitting (e.g., test data being used to create pre-processing object)
-4. General model performance (e.g., for example, in classification, are the labels what are expected based on input)
-5. Model stability issues (e.g., a different train-validation split leads to a large change in the model)
-6. Model behaviour/learning issues (e.g., model learns shortcut to predictions that can learn to erroneous prediction in certain cases)
-7. Bias/fairness issues (e.g., model makes different predictions for particular subgroups of observations)
-8. Reproducibility issues (e.g., model training and prediction outputs are different on different computers or operating systems)
-9. Data drift (e.g., model performance decreases over time in production and the new data appears to being coming from a different distribution than the test data)
+through writing software tests, however all but two 
+(mismatch of ML model choice to data and question, and communication of results) 
+can be somewhat mitigated.
+Furthermore, although user interfaces can be very important parts of ML systems,
+best practices for testing UI's has already been well studied 
+(find refs to point interested readers to).
+As such, we will reduce the list for the purpose of our software test checklist
+for machine learning to all but those three issues.
 
 #### Applied machine learning checklist items
 
-1. Errors in code
-    - [ ] Loading data/model file function works as expected [@microsoftengplaybook]
-    - [ ] Saving data/model/figures function works as expected
-    - [ ] Data cleaning and transforming functions works as expected [@microsoftengplaybook].
+1. General code
 
-2. Data quality issues
-    - [ ] Code checks that files contain data and that it is in the expected format [@microsoftengplaybook].
-    - [ ] Code checks that data does not contain null values, duplicates, wrong types or outliers [@microsoftengplaybook].
+    - [ ] Test machine learning pipeline can run from end-to-end on a small subset of the data and handle failures appropriately5 [@]
+    - [ ] Test loading files (e.g., data, models) works as expected and handle failures appropriately2.
+    - [ ] Test saving files (e.g., data, models) works as expected and handle failures appropriately.
 
-3. Data leakage between training and test set, leading to overfitting
-    - [ ] Data is split into training and test set
-    - [ ] Code checks that there are no duplicate records in the training and test set
-    - [ ] Pre-processor is only created from the test set
+2. Data extraction
+
+    - [ ] Test connection to the data source (e.g., API, URL or file system) is successful, and handle failures appropriately.
+    - [ ] Test extraction of data from source works as expected and handle failures appropriately2.
+    - [ ] Test extracted data filetype, structure and/or schema is correct and handle failures appropriately.
+
+3. Data quality
+
+    - [ ] Test validation of data format and handle invalid formats appropriately2.
+    - [ ] Test checks data schema/column names and handle errors or missingness  appropriately1.
+    - [ ] Test checks for data types and handle identified incorrect data types appropriately1,2.
+    - [ ] Test checks for duplicates and handle identified duplicates appropriately1,2.
+    - [ ] Test checks for category levels and handles any single values and string mismatches appropriately1.
+    - [ ] Test checks for missingness and handle identified missingness appropriately1,2.
+    - [ ] Test checks for outliers or anomalies and handles them appropriately1,2,5.
+    - [ ] Test checks for anomalous correlations between target and features, and between features. Handle anomalous correlations appropriately1.
+    - [ ] Test checks target distribution and handle deviations from expectations appropriately1.
     
-4. General model performance
-    - [ ] The model accept the correct inputs and produce the correctly shaped outputs [@microsoftengplaybook]
-    - [ ] The weights of the model update when running fit [@microsoftengplaybook]
-    - [ ] The model output aligns with expectations [@efftestML]
-    - [ ] The output ranges align with our expectations (eg. the output of a classification model should be a distribution with class probabilities that sum to 1) [@efftestML]
+4. Data transformation/feature engineering
 
-5. Model stability issues
-    - [ ] Code checks the model weights stability during training (e.g., different training/validation/cross-validation splits shouldn't significantly change the weights)
+    - [ ] Test cleaning/transforming and/or feature engineering functions works as expected and handle failures appropriately2,5.
+    - Common data transformations:
+        - One-hot encoding
+        - Ordinal variable encoding
+        - Binning/discretization
+        - Tokenization and vectorization
+        - Log or power transformation
+        - Feature Polynomial Expansion
+        - Signal processing
+        - Dimensionality reduction
 
-6. Model behaviour/learning issues
-    - [ ] Code checks for invariance for predictions [@efftestML, @ribeiro2020beyond]
-    - [ ] Code checks for directionality of predictions [@efftestML, @ribeiro2020beyond]
+5. Data splitting
 
-7. Bias/fairness issues
-    - [ ] ???
+    - [ ] Test splitting of data to training and test sets is of expected proportion and/or sizes and handle incorrect splits appropriately1 . 
+    - [ ] Test splitting of data does not duplicate observations between the training and test sets and handle overlaps appropriately1 . 
+    - [ ] Test splitting of data does not split groups of dependent observations between the training and test sets (e.g., time or geospatial) and handle any leakage appropriately1.
+    - [ ] Test splitting of data does not split groups of dependent observations between the training and test sets (e.g., time or geospatial) and handle any leakage appropriately1.
+    - [ ] Test pre-processor is only created from the training set and handle failures appropriately.
 
-8. Data drift
-    - [ ] Code checks/compares the distribution of features from the training data and the prediction data to determine whether they are different
+6. Model training
+
+    - [ ] Test model accept the correct inputs and handle errors appropriately2.
+    - [ ] Test model weights update during training and handle errors appropriately2,5.
+
+7. Model outputs and evaluation
+
+    - [ ] Test model produces the correctly shaped outputs and handle errors appropriately2.
+    - [ ] Test model output ranges align with our expectations and handle deviations appropriately4,5.
+    - [ ] Test model performance compared to a very simple, baseline model and handle and performance issues appropriately5.
+    - [ ] Test model for systematic errors and handle errors appropriately2.
+    - [ ] Test model for directionality of predictions and handle errors appropriately3.
+    - [ ] Test model for invariance for predictions and handle invariances appropriately3.
+    - [ ] Test model performance meets minimum expectations and handle subpar performance appropriately1.
+    - [ ] Test model performance across important data slices and handle subpar performance on particular slices appropriately5.
+    
+8. Model stability
+
+    - [ ] Test for model weights and/or performance stability during training and handle instability appropriately. 
+    
+9. Bias/fairness issues
+
+    - [ ] Test check for bias in data sets (overall, training, test, predictions) and handle and data bias appropriately.
+    - [ ] Test for performance bias for protected groups and handle any performance bias appropriately1,5.
+
+10. Data drift
+
+    - [ ] Test code checks for drift in prediction data distribution or feature correlations and handle drift appropriately1,5.
+    - [ ] Test model prediction performance against defined thresholds and handle any performance drift appropriately.
+
+11. Reproducibility
+
+    - [ ] Test running the entire machine learning project pipeline (start to finish) can be automated and handle any errors appropriately5.
+    - [ ] Test model weights and/or prediction outputs are not meaningfully different on different runs. Handle any differences appropriately5.
+    - [ ] Test model weights and/or prediction outputs are not meaningfully different on different operating systems and handle differences appropriately.
+
 
 - Use breast cancer toy example/demo to walk through 3-5 items from the checklist
 (maybe one from each kind of test from the testing triangle?)

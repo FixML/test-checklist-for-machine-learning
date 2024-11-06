@@ -1,15 +1,20 @@
-- Problem with software robustness with applied machine learning code. 
+- Problems caused by machine learning code.
 Include and cite examples where non-robust code
 has led to negative societal and economic impacts 
 (e.g., misinformation [@Ashley2024], social bias [@Alice2023], 
 substantial financial losses [@Asheeta2019], and safety hazards [@David2023])
+- Software bugs in machine learning code (summarize [@morovati2024bug, @jaganathan2024poster, @yang2022data]
+- Add in our (abysmal) finding of the prevalence of software tests in a scientific journal (Nature Computational Science) which mainly publishes applied ML studies and requires data and code sharing for publication (Weilin's work).
 - Checklists as a solution to safety critical systems [@gawande2010checklist]
 - Checklists impact in machine learning reproducibility [@pineau2021improving]
-- Goal: a checklist for tests for applied machine learning projects
-- Scope: test checklist is aimed at applications of machine learning,
+- Goal: a checklist for software tests for applied supervised machine learning projects
+- Key points about scope: test checklist is aimed at applications of machine learning,
 not new machine learning methodologies. 
 In future, a checklist for that could be developed, 
 but that is out of scope for this paper.
+Also focusing only on supervised ML because there seems to be a relatively predictable “formula” for supervised machine learning projects (see fig 1 from [@amershi2019software]).
+Finally, really only considering tabular data as a starting point 
+(this could easily be extended to vision or language data later).
 - Potential impact: guide for practitioners, code reviewers, educators, 
 as well as LLM prompts starting points for automated code test suite evaluation 
 and automated test data and software test generation.
