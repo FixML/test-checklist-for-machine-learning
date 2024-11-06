@@ -109,9 +109,20 @@ for machine learning to all but those three issues.
     - [ ] Test model weights and/or prediction outputs are not meaningfully different on different runs. Handle any differences appropriately5.
     - [ ] Test model weights and/or prediction outputs are not meaningfully different on different operating systems and handle differences appropriately.
 
+>Checklist reference numbers above correspond to these (which should all be in `references.bib`)
+>
+>1. Chorev et al (2022). Deepchecks: A Library for Testing and Validating Machine Learning Models and Data. Journal of Machine >Learning Research 23 1-6.
+>
+>2. Microsoft Industry Solutions Engineering Team (2024). Engineering Fundamentals Playbook: Testing Data Science and MLOps Code >Chapter. 
+>
+>3. Ribeiro et al. (2020). Beyond Accuracy: Behavioral Testing of NLP Models with CheckList. In Proceedings of the 58th Annual >Meeting of the Association for Computational Linguistics, pages 4902–4912, Online. Association for Computational Linguistics.
+>
+>4. Jordan (2020). “Effective Testing for Machine Learning Systems.” https://www. jeremyjordan.me/testing-ml/
+>
+>5. Breck et al (2017). The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction. Proceedings of IEEE >Big Data. pp. 1123-1132.
 
 - Use breast cancer toy example/demo to walk through 3-5 items from the checklist
-(maybe one from each kind of test from the testing triangle?)
+(maybe one from each kind of test from the testing triangle? one data splitting, one smoke/end-to-end tests with a small portion of the data). 
 
 - Report evaluation of $n$ (not sure what number n should be...) 
 applied machine learning projects in the wild with respect to the checklist 
