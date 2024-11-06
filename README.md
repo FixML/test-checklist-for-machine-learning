@@ -42,6 +42,10 @@ and software tests themselves for each item on the checklist.
 Please see [`proposal/tests-for-machine-learning.pdf`](proposal/tests-for-machine-learning.pdf)
 for details on data and sources.
 
+### Talk slides:
+
+- https://docs.google.com/presentation/d/1jHAjrQcv1aPqy4PbYn8q8nq2T1rlk95e2AlsUulANMM/edit?usp=sharing
+
 ### License:
 
 Software licensed under the [MIT License](https://spdx.org/licenses/MIT.html), non-software content licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License](https://creativecommons.org/licenses/by-nc-sa/4.0/). See the [license file](LICENSE.md) for more information.
