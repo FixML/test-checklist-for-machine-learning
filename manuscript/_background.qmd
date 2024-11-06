@@ -1,11 +1,16 @@
 - What are formal software tests and why are they used?
+
 - On what kind of systems has most software testing literature 
 been well studied and focused?
+
 - What kinds of software tests exist 
+
 - Impact of software tests on software systems [@mcconnell2004code]
+
 - What do we know about software testing in machine learning code,
 summarize: @BRAIEK2020110542, @openja2023studying, @silva2023case, @breck2017ml, @ribeiro2020beyond]
 answering what kinds of software tests have been observed to be used in the wild.
+
 - Recommendations for testing from industry, 
 summarize: @microsoftengplaybook, @efftestML, @chorev2022deepchecks, @breck2017ml, @ribeiro2020beyond
 - Propose an edited version of the testing triangle that is more understandable??? Or cite https://martinfowler.com/articles/cd4ml.html???
