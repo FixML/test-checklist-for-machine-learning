@@ -3,13 +3,27 @@
 Software testing is defined as 
 the “process of exercising software to verify that it satisfies specified requirement 
 and to detect errors” [@BSI1998].
+It aims to check that the code is correct, 
+and is being constructed correctly.
+There are many many different kinds of software testing strategies,
+and we invite unfamiliar readers interested in learning more about these
+to read this recent review/book (ADD REFERENCE). 
+<!--- I intentionally did not go into more depth here,
+because this is a complex topic, and if someone is unfamiliar,
+they are far better off to read a review 
+than for us to try to briefly list many tests here, 
+which would not do the topic justice.
+Software testing strategies collectively 
+are estimated to be 60-80% effective 
+for indentifying errors in software construction [@mcconnell2004code].
+However, software testing is not the only practice 
+used by software engineers to check that the code is correct, 
+and is being constructed correctly.
+Other practices include design and code inspections and review, 
+modeling or prototyping, and beta testing [@mcconnell2004code].
 
 - On what kind of systems has most software testing literature 
 been well studied and focused?
-
-- What kinds of software tests exist 
-
-- Impact of software tests on software systems [@mcconnell2004code]
 
 - What do we know about software testing in machine learning code,
 summarize: @BRAIEK2020110542, @openja2023studying, @silva2023case, @breck2017ml, @ribeiro2020beyond]
