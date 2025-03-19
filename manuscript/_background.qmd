@@ -26,7 +26,17 @@ modeling or prototyping, and beta testing [@mcconnell2004code].
 Very few studies on software testing have been carried out on
 software for machine learning applications... 
 
-- @BRAIEK2020110542:  
+- @BRAIEK2020110542: Exhaustive literature review of 37 articles 
+to indentify testing techniques that have been proposed 
+to identifying machine learning software errors at the level of the quality of data 
+(both conceptual and implementation), 
+conceptual mistakes during model creation, 
+and model code implementation. 
+<!--- we might want to re-read this review in detail 
+in the context of the checklist to attribute checks 
+that were also described in this paper. 
+Also to see if there are any there that we do not yet have on the checklist. -->
+
 - @openja2023studying:  
 - @silva2023case: 
 - @breck2017ml:
