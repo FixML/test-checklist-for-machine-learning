@@ -12,23 +12,35 @@ to read this recent review/book (ADD REFERENCE).
 because this is a complex topic, and if someone is unfamiliar,
 they are far better off to read a review 
 than for us to try to briefly list many tests here, 
-which would not do the topic justice.
+which would not do the topic justice.-->
 Software testing strategies collectively 
 are estimated to be 60-80% effective 
 for indentifying errors in software construction [@mcconnell2004code].
 However, software testing is not the only practice 
 used by software engineers to check that the code is correct, 
 and is being constructed correctly.
-Other practices include design and code inspections and review, 
+Other practices commonly followed to reduce errors in software 
+include design and code inspections and review, 
 modeling or prototyping, and beta testing [@mcconnell2004code].
 
-- On what kind of systems has most software testing literature 
-been well studied and focused?
+Very few studies on software testing have been carried out on
+software for machine learning applications... 
 
-- What do we know about software testing in machine learning code,
-summarize: @BRAIEK2020110542, @openja2023studying, @silva2023case, @breck2017ml, @ribeiro2020beyond]
-answering what kinds of software tests have been observed to be used in the wild.
+- @BRAIEK2020110542:  
+- @openja2023studying:  
+- @silva2023case: 
+- @breck2017ml:
+- @ribeiro2020beyond:
 
-- Recommendations for testing from industry, 
-summarize: @microsoftengplaybook, @efftestML, @chorev2022deepchecks, @breck2017ml, @ribeiro2020beyond
-- Propose an edited version of the testing triangle that is more understandable??? Or cite https://martinfowler.com/articles/cd4ml.html???
+Despite the academic literature on software testing for machine learning applications
+being in its infancy, 
+there have been several attempts??? (not the right word here...) 
+from industry to make recommendations for what software tests should be carried out for this kind of software.
+
+- @microsoftengplaybook:
+- @efftestML:
+- @chorev2022deepchecks:
+- @breck2017ml (but this is in the list above...)
+- @ribeiro2020beyond
+
+<---! - Propose an edited version of the testing triangle that is more understandable??? Or cite https://martinfowler.com/articles/cd4ml.html??? -->
