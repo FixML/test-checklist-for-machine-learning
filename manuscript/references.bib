@@ -59,18 +59,41 @@
   doi={10.1109/QRS.2018.00044}}
 
 @article{openja2023studying,
-  title={Studying the Practices of Testing Machine Learning Software in the Wild},
-  author={Openja, Moses and Khomh, Foutse and Foundjem, Armstrong and Ming, Zhen and Abidi, Mouna and Hassan, Ahmed E and others},
-  journal={arXiv preprint arXiv:2312.12604},
-  year={2023}
+author = {Openja, Moses and Khomh, Foutse and Foundjem, Armstrong and Jiang, Zhen Ming (Jack) and Abidi, Mouna and Hassan, Ahmed E.},
+title = {An Empirical Study of Testing Machine Learning in the Wild},
+year = {2024},
+issue_date = {January 2025},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {34},
+number = {1},
+issn = {1049-331X},
+url = {https://doi.org/10.1145/3680463},
+doi = {10.1145/3680463},
+abstract = {Background: Recently, machine and deep learning (ML/DL) algorithms have been increasingly adopted in many software systems. Due to their inductive nature, ensuring the quality of these systems remains a significant challenge for the research community. Traditionally, software systems were constructed deductively, by writing explicit rules that govern the behavior of the system as program code. However, ML/DL systems infer rules from training data i.e., they are generated inductively. Recent research in ML/DL quality assurance has adapted concepts from traditional software testing, such as mutation testing, to improve reliability. However, it is unclear if these proposed testing techniques are adopted in practice, or if new testing strategies have emerged from real-world ML deployments. There is little empirical evidence about the testing strategies.Aims: To fill this gap, we perform the first fine-grained empirical study on ML testing in the wild to identify the ML properties being tested, the testing strategies, and their implementation throughout the ML workflow.Method: We conducted a mixed-methods study to understand ML software testing practices. We analyzed test files and cases from 11 open-source ML/DL projects on GitHub. Using open coding, we manually examined the testing strategies, tested ML properties, and implemented testing methods to understand their practical application in building and releasing ML/DL software systems.Results: Our findings reveal several key insights: (1) The most common testing strategies, accounting for less than 40\%, are Grey-box and White-box methods, such as Negative Testing, Oracle Approximation, and Statistical Testing. (2) A wide range of (17) ML properties are tested, out of which only 20\% to 30\% are frequently tested, including Consistency, Correctness, and Efficiency. (3) Bias and Fairness is more tested in Recommendation (6\%) and Computer Vision (CV) (3.9\%) systems, while Security and Privacy is tested in CV (2\%), Application Platforms (0.9\%), and NLP (0.5\%). (4) We identified 13 types of testing methods, such as Unit Testing, Input Testing, and Model Testing.Conclusions: This study sheds light on the current adoption of software testing techniques and highlights gaps and limitations in existing ML testing practices.},
+journal = {ACM Trans. Softw. Eng. Methodol.},
+month = dec,
+articleno = {7},
+numpages = {63},
+keywords = {Machine learning, Deep learning, Software Testing, Machine learning workflow, Testing strategies, Testing methods, ML properties, Test types/Types of testing}
 }
 
 @inproceedings{silva2023case,
-  title={A Case Study on Data Science Processes in an Academia-Industry Collaboration},
-  author={Silva, Sara and De Fran{\c{c}}a, Breno Bernard Nicolau},
-  booktitle={Proceedings of the XXII Brazilian Symposium on Software Quality},
-  pages={1--10},
-  year={2023}
+author = {Silva, Sara and De Fran\c{c}a, Breno Bernard Nicolau},
+title = {A Case Study on Data Science Processes in an Academia-Industry Collaboration},
+year = {2023},
+isbn = {9798400707865},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3629479.3629514},
+doi = {10.1145/3629479.3629514},
+abstract = {Data Science (DS) is emerging in major software development projects and often needs to follow software development practices. Therefore, DS processes will likely continue to attract Software Engineering (SE) practices and vice-versa. This case study aims to map and describe a software development process for Machine Learning(ML)-enabled applications and associated practices used in a real DS project at the Recod.ai laboratory in collaboration with an industrial partner. The focus was to analyze the process and identify the strengths and primary challenges, considering their expertise in robust ML practices and how they can contribute to general software quality. To achieve this, we conducted semi-structured interviews and analyzed them using procedures from the Straussian Grounded Theory. The results showed that the DS development process is iterative, with feedback between activities, which differs from the processes in the literature. Additionally, this process presents a greater involvement of domain experts. Besides, the team prioritizes software quality characteristics (attributes) in these DS projects to ensure some aspects of the final product’s quality, i.e., functional correctness and robustness. To achieve those, they use regular accuracy metrics and include explainability and data leakage as quality metrics during training. Finally, the software engineer’s role and its responsibilities differ from those of a traditional industry software engineer, as s/he is involved in most of the process steps. These characteristics can contribute to high-quality models achieving the partner needs and, consequently, relevant contributions to the intersection between SE and DS.},
+booktitle = {Proceedings of the XXII Brazilian Symposium on Software Quality},
+pages = {1–10},
+numpages = {10},
+keywords = {case study, data science, machine learning, software processes},
+location = {Bras\'{\i}lia, Brazil},
+series = {SBQS '23}
 }
 
 @article{BRAIEK2020110542,
