@@ -37,7 +37,13 @@ in the context of the checklist to attribute checks
 that were also described in this paper. 
 Also to see if there are any there that we do not yet have on the checklist. -->
 
-- @openja2023studying:  
+- @openja2023studying:  Empirical mixed-methods study surveying testing strategies, 
+tested machine learning properties, and implemented testing methods 
+of 11 open-source machine learning/data science projects from GitHub.
+Idenfified which strategies, properties and methods 
+were most commonly used and implemented, 
+as well as highlighted areas for improvement in the field with regards to testing.
+
 - @silva2023case: 
 - @breck2017ml:
 - @ribeiro2020beyond:
