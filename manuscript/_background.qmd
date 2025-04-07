@@ -1,7 +1,7 @@
 ## Background
 
 Software testing is defined as 
-the “process of exercising software to verify that it satisfies specified requirement 
+the “process of exercising software to verify that it satisfies specified requirements 
 and to detect errors” [@BSI1998].
 It aims to check that the code is correct, 
 and is being constructed correctly.
@@ -23,10 +23,12 @@ Other practices commonly followed to reduce errors in software
 include design and code inspections and review, 
 modeling or prototyping, and beta testing [@mcconnell2004code].
 
-Very few studies on software testing have been carried out on
-software for machine learning applications... 
-
-- @BRAIEK2020110542: Exhaustive literature review of 37 articles 
+Despite most machine learning applications being written in computer code,
+and thus being software, 
+just a few academic studies on software testing practices for machine learning applications
+have been carried out. 
+The first such study by Braiek and Khomh [-@BRAIEK2020110542] was an
+exhaustive literature review of 37 articles 
 to indentify testing techniques that have been proposed 
 to identifying machine learning software errors at the level of the quality of data 
 (both conceptual and implementation), 
@@ -36,32 +38,29 @@ and model code implementation.
 in the context of the checklist to attribute checks 
 that were also described in this paper. 
 Also to see if there are any there that we do not yet have on the checklist. -->
-
-- @silva2023case: Case study where they conducted and analyzed semi-structured interviews 
+Later Silva and de França [-@silva2023case] carried out a case study 
+where they conducted and analyzed semi-structured interviews 
 focused on the software development processes used 
 in a machine learning/data science project at the Recod.ai laboratory, 
 which was carried out in collaboration with an industrial partner.
-
-- @openja2023studying:  Empirical mixed-methods study surveying testing strategies, 
+Most recently, Openja and colleagues [-@openja2023studying]
+performed an empirical mixed-methods study surveying testing strategies, 
 tested machine learning properties, and implemented testing methods 
 of 11 open-source machine learning/data science projects from GitHub.
 Idenfified which strategies, properties and methods 
 were most commonly used and implemented, 
 as well as highlighted areas for improvement in the field with regards to testing.
-
-- @breck2017ml:
-
-- @ribeiro2020beyond:
-
 Despite the academic literature on software testing for machine learning applications
 being in its infancy, 
-there have been several attempts??? (not the right word here...) 
-from industry to make recommendations for what software tests should be carried out for this kind of software.
+there have been several efforts
+from industry to make recommendations for what software tests 
+should be carried out for software written for machine learning applications 
+[@microsoftengplaybook;@efftestML;@chorev2022deepchecks;@breck2017ml;@ribeiro2020beyond].
 
-- @microsoftengplaybook:
-- @efftestML:
-- @chorev2022deepchecks:
-- @breck2017ml (but this is in the list above...)
-- @ribeiro2020beyond
+Each academic study, and industrial recommendation article or tool cited above
+presents important ideas and recommendations for testing stategies and properties 
+when writing software for machine learning applications.
+However, none of these on its their own can act as a complete guide of what should be done.
+Here, in this article we attempt to synthesize a comprehensive list of all the key things to test when software for writing machine learning applications.
 
 <---! - Propose an edited version of the testing triangle that is more understandable??? Or cite https://martinfowler.com/articles/cd4ml.html??? -->
