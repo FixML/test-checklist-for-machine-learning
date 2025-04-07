@@ -37,6 +37,11 @@ in the context of the checklist to attribute checks
 that were also described in this paper. 
 Also to see if there are any there that we do not yet have on the checklist. -->
 
+- @silva2023case: Case study where they conducted and analyzed semi-structured interviews 
+focused on the software development processes used 
+in a machine learning/data science project at the Recod.ai laboratory, 
+which was carried out in collaboration with an industrial partner.
+
 - @openja2023studying:  Empirical mixed-methods study surveying testing strategies, 
 tested machine learning properties, and implemented testing methods 
 of 11 open-source machine learning/data science projects from GitHub.
@@ -44,8 +49,8 @@ Idenfified which strategies, properties and methods
 were most commonly used and implemented, 
 as well as highlighted areas for improvement in the field with regards to testing.
 
-- @silva2023case: 
 - @breck2017ml:
+
 - @ribeiro2020beyond:
 
 Despite the academic literature on software testing for machine learning applications
