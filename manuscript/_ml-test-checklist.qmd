@@ -30,96 +30,208 @@ for machine learning to all but those three issues.
 
 1. General code
 
-    - [ ] Test machine learning pipeline can run from end-to-end on a small subset of the data and handle failures appropriately5 [@]
-    - [ ] Test loading files (e.g., data, models) works as expected and handle failures appropriately2.
-    - [ ] Test saving files (e.g., data, models) works as expected and handle failures appropriately.
+    1. [ ] Test machine learning pipeline can run from end-to-end on a small subset of the data and handle failures appropriately [@breck2017mltestscore].
+    	**Details:** The ability to quickly run the entire pipeline on a subset of data is useful to ensure the overall consistency of the project as data or models are updated. It also helps ensure a coherence between the paper and the underlying code. Being able to easily vary the size of the subset is useful to allow regular quick runs and larger full runs from time to time. 
+    	**Suggested implementation:** Compare some expected output, such as a graph or summary statistic, with what it should look like based on earlier runs.
+    2. [ ] Test loading files (e.g., data, models) works as expected and handle failures appropriately [@microsoft2024testing].
+    	**Details:** Loading the incorrect file, especially out-dated files is a common cause of difficult-to-diagnose errors later in the pipeline. 
+    	**Suggested implementation:** Compare functions that read files with the files expected in a schema.
+    3. [ ] Test saving files (e.g., data, models) works as expected and handle failures appropriately.
+    	**Details:** We want to be sure that files are saved with consistent, meaningful, filenames and not inappropriately over-written. 
+    	**Suggested implementation:** Compare functions that save files with files expected in a schema.
 
 2. Data extraction
 
-    - [ ] Test connection to the data source (e.g., API, URL or file system) is successful, and handle failures appropriately.
-    - [ ] Test extraction of data from source works as expected and handle failures appropriately2.
-    - [ ] Test extracted data filetype, structure and/or schema is correct and handle failures appropriately.
+    1. [ ] Test connection to the data source (e.g., API, URL or file system) is successful, and handle failures appropriately.
+    	**Details:** Data sources change from time to time, but in general we would expect that the connection should exist and be persistent while the project is being actively worked on. If there was a concern, for instance an update to the API, then we need to know about this so that code is reproducible at the point of submission. 
+    	**Suggested implementation:** Check for ability to get small amounts of data.
+    2. [ ] Test extraction of data from source works as expected and handle failures appropriately [@microsoft2024testing].
+    	**Details:** We will likely be saving a local copy of data from an external source as we go. So we want to compare the data that we have with the new data that are provided by the source. If there is a failure or difference between data that were obtained earlier and those that are available now then we want to be alerted to this. 
+    	**Suggested implementation:** Check that small amounts of previously obtained data match the data that are now available.
+    3. [ ] Test extracted data filetype, structure and/or schema is correct and handle failures appropriately.
+    	**Details:** Partly this is a test of consistency with our expectations. For instance, should a particular file be a certain type needs to be specified in a schema, and while it is fine for it to change, that change should be deliberate. 
+    	**Suggested implementation:** Check that all file types are consistent with the schema.
 
 3. Data quality
 
-    - [ ] Test validation of data format and handle invalid formats appropriately2.
-    - [ ] Test checks data schema/column names and handle errors or missingness  appropriately1.
-    - [ ] Test checks for data types and handle identified incorrect data types appropriately1,2.
-    - [ ] Test checks for duplicates and handle identified duplicates appropriately1,2.
-    - [ ] Test checks for category levels and handles any single values and string mismatches appropriately1.
-    - [ ] Test checks for missingness and handle identified missingness appropriately1,2.
-    - [ ] Test checks for outliers or anomalies and handles them appropriately1,2,5.
-    - [ ] Test checks for anomalous correlations between target and features, and between features. Handle anomalous correlations appropriately1.
-    - [ ] Test checks target distribution and handle deviations from expectations appropriately1.
+    1. [ ] Test validation of data format and handle invalid formats appropriately [@microsoft2024testing].
+    	**Details:** Changed formats is not necessarily wrong, but needs to be deliberate and consistent with a schema. 
+    	**Suggested implementation:** Test data formats against the schema.
+    2. [ ] Test checks data schema/column names and handle errors or missingness appropriately [@chorev2022deepchecks].
+    	**Details:** Slight variants of names can result in analysis that appears correct but is not. Further, inconsistent names can make it difficult for analysis to be checked by another person. 
+    	**Suggested implementation:** Compare data names with those in the schema and against a controlled naming vocabulary. 
+    3. [ ] Test checks for data types and handle identified incorrect data types appropriately [@chorev2022deepchecks; @microsoft2024testing].
+    	**Details:** Variable class is another potential source of difficult to diagnose errors. For instance, if a variable is changed from an integer to a factor it will appear the same to casual observation, but would be differently handled in, say, regression. 
+    	**Suggested implementation:** Test cleaned data types against the schema.
+    4. [ ] Test checks for duplicates and handle identified duplicates appropriately [@chorev2022deepchecks; @microsoft2024testing].
+    	**Details:** Duplicates in a dataset are fine if they are expected, but if they are introduced during the process may be errors due to incorrect matching. 
+    	**Suggested implementation:** Create a list of known correct duplicates and assess datasets against these.
+    5. [ ] Test checks for category levels and handles any single values and string mismatches appropriately [@chorev2022deepchecks]. 
+    	**Details:** New categories can be the result of incorrect or incomplete data cleaning. 
+    	**Suggested implementation:** Compare with the schema. Additionally, consider checking for small differences between category levels using fuzzy matching.
+    6. [ ] Test checks for missingness and handle identified missingness appropriately [@chorev2022deepchecks; @microsoft2024testing].
+    	**Details:** Missing data need to dealt with in a way that is appropriate. This may mean dropping observations or variables or data imputation. It may also mean careful analysis for instance when building regression models. 
+    	**Suggested implementation:** Ensure that counts of observations and unique values are consistent with expectations.
+    7. [ ] Test checks for outliers or anomalies and handles them appropriately [@chorev2022deepchecks; @microsoft2024testing; @breck2017mltestscore]
+    	**Details:** Outliers and anomalies are context-specific and require detailed consideration and documentation of decisions made.
+    	**Suggested implementation:** Compare against simulated data.
+    8. [ ] Test checks for anomalous correlations between target and features, and between features. Handle anomalous correlations appropriately [@chorev2022deepchecks].
+    	**Details:** The relationship features should be as expected and if it is inconsistent this should be identified to the analyst. 
+    	**Suggested implementation:** Compare against simulated data.
+    9. [ ] Test checks target distribution and handle deviations from expectations appropriately.
+    	**Details:** Largely this needs to be looking for differences compared with expectations. For instance, we may expect some data to have an exponential distribution. 
+    	**Suggested implementation:** Compare against simulated data.
     
 4. Data transformation/feature engineering
 
-    - [ ] Test cleaning/transforming and/or feature engineering functions works as expected and handle failures appropriately2,5.
-    - Common data transformations:
-        - One-hot encoding
-        - Ordinal variable encoding
-        - Binning/discretization
-        - Tokenization and vectorization
-        - Log or power transformation
-        - Feature Polynomial Expansion
-        - Signal processing
-        - Dimensionality reduction
+    1. [ ] Test cleaning/transforming and/or feature engineering functions works as expected and handle failures appropriately [@microsoft2024testing; @breck2017mltestscore].
+    	**Details:** Common data transformations include: one-hot encoding; ordinal variable encoding; binning/discretization; tokenization and vectorization; log or power transformation; feature polynomial expansion; signal processing; dimensionality reduction. We are interested in ensuring faithfulness to the intention of the analyst for instance, that tokenization has happened in the intended dataset, and that log transformation has not accidently resulted in NAs. 
+    	**Suggested implementation:** Check the number of observations before and after using these functions.
 
 5. Data splitting
 
-    - [ ] Test splitting of data to training and test sets is of expected proportion and/or sizes and handle incorrect splits appropriately1 . 
-    - [ ] Test splitting of data does not duplicate observations between the training and test sets and handle overlaps appropriately1 . 
-    - [ ] Test splitting of data does not split groups of dependent observations between the training and test sets (e.g., time or geospatial) and handle any leakage appropriately1.
-    - [ ] Test splitting of data does not split groups of dependent observations between the training and test sets (e.g., time or geospatial) and handle any leakage appropriately1.
-    - [ ] Test pre-processor is only created from the training set and handle failures appropriately.
+    1. [ ] Test splitting of data to training and test sets is of expected proportion and/or sizes and handle incorrect splits appropriately [@chorev2022deepchecks].
+    	**Details:** Expected training/test split should be documented. 
+    	**Suggested implementation:** Compare implementation, both the function argument and by comparing sample sizes, against documentation.
+    2. [ ] Test splitting of data does not duplicate observations between the training and test sets and handle overlaps appropriately [@chorev2022deepchecks].
+    	**Details:** Accidently duplicating observations is easy to do when splitting data. While it may be that observations with the same values are in each, it should be the case that these were actually different observations of the same values and not the same values.
+    	**Suggested implementation:** Check the number of observations in each and compare unique values such as ID.
+    3. [ ] Test splitting of data does not split groups of dependent observations between the training and test sets (e.g., time or geospatial) and handle any leakage appropriately [@chorev2022deepchecks].
+    	**Details:** Certain variables could be problematic if they were incorrectly split. For instance, consider accidently including a sports teams win-loss record, from a future time period, when trying to forecast whether they will win the next game. Potentially problematic variables should be documented.
+    	**Suggested implementation:** Test for the existence of documentation and then compared the implementation of test/training functions against that documentation.
+    4. [ ] Test pre-processor is only created from the training set and handle failures appropriately.
+    	**Details:** Preprocessing involves changing raw data into the data that will be used in the model. We generally want to implement these steps on the training set to avoid leakage.
+    	**Suggested implementation:** Test that the pre-processor is using the training dataset.
 
 6. Model training
 
-    - [ ] Test model accept the correct inputs and handle errors appropriately2.
-    - [ ] Test model weights update during training and handle errors appropriately2,5.
+    1. [ ] Test model accepts the correct inputs and handle errors appropriately [@microsoft2024testing]
+    	**Details:** Loading the wrong dataset into a model is easy to do if there are multiple similarly named datasets.
+    	**Suggested implementation:** Test the dataset being loaded into the model against the schema.
+    2. [ ] Test model weights update during training and handle errors appropriately [@microsoft2024testing; @breck2017mltestscore]
+    	**Details:** It is possible that model weights are not being appropriately updated, for instance if they were accidently using a null or unit matrix.
+    	**Suggested implementation:** Compare model weights between training runs and ensure differences.
 
 7. Model outputs and evaluation
 
-    - [ ] Test model produces the correctly shaped outputs and handle errors appropriately2.
-    - [ ] Test model output ranges align with our expectations and handle deviations appropriately4,5.
-    - [ ] Test model performance compared to a very simple, baseline model and handle and performance issues appropriately5.
-    - [ ] Test model for systematic errors and handle errors appropriately2.
-    - [ ] Test model for directionality of predictions and handle errors appropriately3.
-    - [ ] Test model for invariance for predictions and handle invariances appropriately3.
-    - [ ] Test model performance meets minimum expectations and handle subpar performance appropriately1.
-    - [ ] Test model performance across important data slices and handle subpar performance on particular slices appropriately5.
+    1. [ ] Test model produces the correctly shaped outputs and handle errors appropriately [@microsoft2024testing].
+    	**Details:** Aspects such as producing a forecast for each observation or reasonable potential observation need to be checked.
+    	**Suggested implementation:** Check ability to provide reasonable estimates for all input data.
+    2. [ ] Test model output ranges align with our expectations and handle deviations appropriately [@jordan2020testing; @breck2017mltestscore].
+    	**Details:** We know, generally, what to expect of our models and this should be documented through simulation.
+    	**Suggested implementation:** Compare distribution of outputs with simulation.
+    3. [ ] Test model performance compared to a very simple, baseline model and handle and performance issues appropriately [@breck2017mltestscore].
+    	**Details:** Use simulation to establish a baseline with a known, expected, output and then compare the model's performance.
+    	**Suggested implementation:** Compare the model's performance on simulated data.
+    4. [ ] Test model for systematic errors and handle errors appropriately [@microsoft2024testing].
+    	**Details:** Aspects such as monotonically increasing inputs, should have a monotonic response.
+    	**Suggested implementation:** Document expectations.
+    5. [ ] Test model for directionality of predictions and handle errors appropriately [@ribeiro2020checklist].
+    	**Details:** Establish expectations using simulation and then compare results against those.
+    	**Suggested implementation:** Compare results with simulation.
+    6. [ ] Test model for invariance for predictions and handle invariances appropriately [@ribeiro2020checklist].
+    	**Details:** We expect our model results to be consistent when certain inputs are changed. For instance, in the case of a numeric output, adding one to each outcome variable should only change the intercept of a model.
+    	**Suggested implementation:** Slightly perturb the input dataset and check invariance of the model output.
+    7. [ ] Test model performance meets minimum expectations and handle subpar performance appropriately [@chorev2022deepchecks].
+    	**Details:** Establish expectations for the accuracy and other aspects of model performance.
+    	**Suggested implementation:** Compare expectations of model performance with expected.
+    8. [ ] Test model performance across important data slices and handle subpar performance on particular slices appropriately [@breck2017mltestscore].
+    	**Details:** For key takeaways from the modelling we want to be sure that the results are as we expect.
+    	**Suggested implementation:** Re-run the model on important subsections of the data.
     
 8. Model stability
 
-    - [ ] Test for model weights and/or performance stability during training and handle instability appropriately. 
+    1. [ ] Test for model weights and/or performance stability during training and handle instability appropriately. 
+    	**Details:** Substantial changes in model weights during training can suggest concerns, such as algorithm implementation or hardware issues.
+    	**Suggested implementation:** Specify an expected level and then check for differences against that.
     
 9. Bias/fairness issues
 
-    - [ ] Test check for bias in data sets (overall, training, test, predictions) and handle and data bias appropriately.
-    - [ ] Test for performance bias for protected groups and handle any performance bias appropriately1,5.
+    1. [ ] Test check for bias in data sets (overall, training, test, predictions) and handle and data bias appropriately.
+    	**Details:** Bias is context-specific, but should align with an analysts expectations. The analyst should specify their expectations in documentation.
+    	**Suggested implementation:** Check that expectations are specified in documentation and compare results with expectations.
+    2. [ ] Test for performance bias for protected groups and handle any performance bias appropriately [@chorev2022deepchecks; @breck2017mltestscore].
+    	**Details:** Protected groups might be identified by variables such as age, sex, gender or race, to name a few. Our analysis needs to be consistent between protected groups. 
+    	**Suggested implementation:** Document expectations for protected groups and then compare against this documentation.
 
 10. Data drift
 
-    - [ ] Test code checks for drift in prediction data distribution or feature correlations and handle drift appropriately1,5.
-    - [ ] Test model prediction performance against defined thresholds and handle any performance drift appropriately.
+    1. [ ] Test code checks for drift in prediction data distribution or feature correlations and handle drift appropriately [@chorev2022deepchecks; @breck2017mltestscore].
+    	**Details:** As new data are available our forecasts may differ. This may be expected but when it happens the analyst should be aware of it. Limits should be documented. 
+    	**Suggested implementation:** Compare snapshots at different time periods for deviations beyond specified limits.
+    2. [ ] Test model prediction performance against defined thresholds and handle any performance drift appropriately.
+    	**Details:** Expected thresholds should be documented.
+    	**Suggested implementation:** Performance should be compared against thresholds.
 
 11. Reproducibility
 
-    - [ ] Test running the entire machine learning project pipeline (start to finish) can be automated and handle any errors appropriately5.
-    - [ ] Test model weights and/or prediction outputs are not meaningfully different on different runs. Handle any differences appropriately5.
-    - [ ] Test model weights and/or prediction outputs are not meaningfully different on different operating systems and handle differences appropriately.
+    1. [ ] Test running the entire machine learning project pipeline (start to finish) can be automated and handle any errors appropriately: 
+    	**Details:** The full pipeline should run to the extent possible. Some exceptions could include data restrictions or models with excessively long run times.
+    	**Suggested implementation:** Compare expected output with actual outputs when a run is triggered.
+    2. [ ] Test model weights and/or prediction outputs are not meaningfully different on different runs. Handle any differences appropriately [@breck2017mltestscore].
+    	**Details:** We would generally expect that outputs should be similar between runs and differences may suggest algorithmic, hardware, or data issues. We should specify the degree of expected difference between runs in documentation.
+    	**Suggested implementation:** Compare outputs between runs against documentation.
+    3. [ ] Test model weights and/or prediction outputs are not meaningfully different on different operating systems and handle differences appropriately.
+    	**Details:** Small aspects such as paths should be specified in a platform agnostic way. Larger issues, such as model implementation or random variable seed specification may cause small differences between operating systems. 
+    	**Suggested implementation:** Recommend when aspects such as paths are specified incorrectly. Run on different OS and ensure that non-stochastic aspects are consistent and that stochastic aspects are within expected tolerances.
 
->Checklist reference numbers above correspond to these (which should all be in `references.bib`)
->
->1. Chorev et al (2022). Deepchecks: A Library for Testing and Validating Machine Learning Models and Data. Journal of Machine >Learning Research 23 1-6.
->
->2. Microsoft Industry Solutions Engineering Team (2024). Engineering Fundamentals Playbook: Testing Data Science and MLOps Code >Chapter. 
->
->3. Ribeiro et al. (2020). Beyond Accuracy: Behavioral Testing of NLP Models with CheckList. In Proceedings of the 58th Annual >Meeting of the Association for Computational Linguistics, pages 4902–4912, Online. Association for Computational Linguistics.
->
->4. Jordan (2020). “Effective Testing for Machine Learning Systems.” https://www. jeremyjordan.me/testing-ml/
->
->5. Breck et al (2017). The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction. Proceedings of IEEE >Big Data. pp. 1123-1132.
+
+
+----
+
+@article{chorev2022deepchecks,
+  author = {Chorev, Shir and Gutfreund, Philip Tannor and Barda, Amit and Shenfeld, Yaron and Perelman, Philip and Palatnik, Marina and Katzir, Lior},
+  title = {Deepchecks: A Library for Testing and Validating Machine Learning Models and Data},
+  journal = {Journal of Machine Learning Research},
+  volume = {23},
+  pages = {1--6},
+  year = {2022}
+}
+
+@incollection{microsoft2024testing,
+  author = {{Microsoft Industry Solutions Engineering Team}},
+  title = {Engineering Fundamentals Playbook: Testing Data Science and {MLOps} Code},
+  booktitle = {Engineering Fundamentals Playbook},
+  publisher = {Microsoft},
+  year = {2024},
+  note = {Chapter}
+}
+
+@inproceedings{ribeiro2020checklist,
+  author = {Ribeiro, Marco Tulio and Wu, Tongshuang and Guestrin, Carlos and Singh, Sameer},
+  title = {Beyond Accuracy: Behavioral Testing of {NLP} Models with {CheckList}},
+  booktitle = {Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics},
+  pages = {4902--4912},
+  year = {2020},
+  location = {Online},
+  publisher = {Association for Computational Linguistics}
+}
+
+@misc{jordan2020testing,
+  author = {Jordan, Jeremy},
+  title = {Effective Testing for Machine Learning Systems},
+  year = {2020},
+  howpublished = {\url{https://www.jeremyjordan.me/testing-ml/}},
+  note = {Accessed: 2024-04-11}
+}
+
+@inproceedings{breck2017mltestscore,
+  author = {Breck, Eric and Cai, Shanqing and Nielsen, Eric and Salib, Michael and Sculley, D.},
+  title = {The ML Test Score: A Rubric for {ML} Production Readiness and Technical Debt Reduction},
+  booktitle = {Proceedings of IEEE International Conference on Big Data},
+  pages = {1123--1132},
+  year = {2017},
+  publisher = {IEEE}
+}
+
+
+---
+
+Similar: 11-1 and 1-1; 8-1 and 6.2
+Add something about versioning of packages?
+Seeds aren't mentioned?
+Performant code mentioned?
+
 
 - Use breast cancer toy example/demo to walk through 3-5 items from the checklist
 (maybe one from each kind of test from the testing triangle? one data splitting, one smoke/end-to-end tests with a small portion of the data). 
